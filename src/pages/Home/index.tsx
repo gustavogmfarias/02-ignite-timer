@@ -14,7 +14,6 @@ export function Home() {
         <HomeContainer>
             <form action="">
                 <FormContainer>
-                    {" "}
                     <label htmlFor="task">Vou trabalhar em</label>
                     <TaskInput
                         id="task"

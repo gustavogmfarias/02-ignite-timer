@@ -7,6 +7,7 @@ import {
     useState,
 } from "react";
 import {
+    ActionTypes,
     addNewCycleAction,
     interruptCurrentCycleAction,
     markCurrentCycleAsFinishedAction,
@@ -44,14 +45,14 @@ export function CyclesContextProvider({
             cycles: [],
             activeCycleId: null,
         },
-        () => {
-            const storedStateAsJSON = localStorage.getItem(
+        (initialValue) => {
+            const cyclesCacheJSON = localStorage.getItem(
                 "@ignite-timer:cycles-state-1.0.0"
             );
 
-            if (storedStateAsJSON) {
-                return JSON.parse(storedStateAsJSON);
-            }
+            if (!cyclesCacheJSON) return initialValue;
+
+            return JSON.parse(cyclesCacheJSON);
         }
     );
 
